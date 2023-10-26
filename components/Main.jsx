@@ -1,53 +1,60 @@
 import React from 'react'
+import Results from './Results'
+import DomainScan from './DomainScan'
+import FileScan from './FileScan'
+import IPScan from './IPScan'
+import URLScan from './URLScan'
 
 function Main() {
   return (
     <div className="h-screen flex">
       {/* Left Half */}
+      
       <div className="w-1/2 flex flex-col">
-        {/* Left Top (2/3) */}
-        <div className="h-2/3 p-4">
-          <div className="bg-gray-300 h-full rounded-md p-4">
-            {/* Content for the top left section */}
-            añoña
-          </div>
-        </div>
-
-        {/* Left Bottom (1/3) */}
-        <div className="h-1/3 p-4">
+                {/* Left Bottom (1/3) */}
+                <div className="h-1/6 p-2">
           <div className="bg-gray-300 h-full rounded-md p-4">
             {/* Content for the bottom left section */}
           </div>
         </div>
+        {/* Left Top (2/3) */}
+        <div className="h-5/6 p-2">
+          <div className="bg-gray-300 h-full rounded-md p-4">
+            {/* Content for the top left section */}
+            <Results />
+          </div>
+        </div>
+
+
       </div>
 
       {/* Right Half */}
       <div className="w-1/2 flex flex-col">
         {/* Right Top (1/4) */}
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-2">
           <div className="bg-gray-300 h-full rounded-md p-4">
-            {/* Content for the top right section */}
+            <FileScan />
           </div>
         </div>
 
         {/* Right Top (1/4) */}
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-2">
           <div className="bg-gray-300 h-full rounded-md p-4">
-            {/* Content for the top right section */}
+            <URLScan />
           </div>
         </div>
 
         {/* Right Top (1/4) */}
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-2">
           <div className="bg-gray-300 h-full rounded-md p-4">
-            {/* Content for the top right section */}
+            <IPScan />
           </div>
         </div>
 
         {/* Right Top (1/4) */}
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-2">
           <div className="bg-gray-300 h-full rounded-md p-4">
-            {/* Content for the top right section */}
+            <DomainScan />
           </div>
         </div>
       </div>

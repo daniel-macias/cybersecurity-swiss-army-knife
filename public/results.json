@@ -1,0 +1,136 @@
+{
+    "status": "ok",
+    "totalResults": 248,
+    "articles": [
+        {
+            "source": {
+                "id": null,
+                "name": "Slashdot.org"
+            },
+            "author": "BeauHD",
+            "title": "Okta Cybersecurity Breach Wipes Out More Than $2 Billion In Market Cap",
+            "description": "Since disclosing a security breach of its support systems Friday, Okta has shed more than $2 billion from its market valuation \"Okta shares slumped more than 11% Friday after the company said an unidentified hacking group was able to access client files throu…",
+            "url": "https://it.slashdot.org/story/23/10/24/2235259/okta-cybersecurity-breach-wipes-out-more-than-2-billion-in-market-cap",
+            "urlToImage": "https://a.fsdn.com/sd/topics/security_64.png",
+            "publishedAt": "2023-10-25T02:02:00Z",
+            "content": "Okta is a lesser-known name but forms a critical part of cybersecurity systems at major corporations. The identity management company boasts more than 18,000 customers who use its products to provide… [+1454 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Karoli Hindriks",
+            "title": "Anti-immigration policy is killing European tech",
+            "description": "Governments need to create environments where founders and their teams can imagine building lasting and successful businesses.",
+            "url": "https://techcrunch.com/2023/10/17/anti-immigration-policy-is-killing-european-tech/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2023/10/GettyImages-474416023.jpg?resize=1200,800",
+            "publishedAt": "2023-10-25T11:26:44Z",
+            "content": "Increases in immigration to Europe since the pandemic have given politicians ample material for election campaigns. Despite illegal immigration making up just a fraction of net migration to Europe, r… [+6495 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "9to5Mac"
+            },
+            "author": "Ben Lovejoy",
+            "title": "CSAM scanning in chat apps would echo communist surveillance, and put children at risk",
+            "description": "A planned law to require CSAM scanning in chat apps would be illegal, disproportionate, and could increase rather than decrease the risks to children, say experts. It could also see Apple withdraw iMessage from EU countries.\n\n\n\nThe warning was given by more t…",
+            "url": "https://9to5mac.com/2023/10/25/csam-scanning-in-chat-apps/",
+            "urlToImage": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2023/10/CSAM-scanning-in-chat-apps.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt": "2023-10-25T12:16:56Z",
+            "content": "A planned law to require CSAM scanning in chat apps would be illegal, disproportionate, and could increase rather than decrease the risks to children, say experts. It could also see Apple withdraw iM… [+4025 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Wikihow.com"
+            },
+            "author": "Stan Kats",
+            "title": "How to View Old Call History on iPhone",
+            "description": "Track down old phone calls in your iPhone call history\nIf you have an iPhone, you may have noticed that you cannot view your entire call history in your Phone app. This can be problematic if you need to find a specific call record or have lost a phone number …",
+            "url": "https://www.wikihow.com/View-Old-Call-History-on-iPhone",
+            "urlToImage": "https://www.wikihow.com/images/c/c9/View-Old-Call-History-on-iPhone-Step-13.jpg",
+            "publishedAt": "2023-10-25T00:00:00Z",
+            "content": "This article was reviewed by Stan Kats and by wikiHow staff writer, Hannah Dillon. Stan Kats is the COO and Chief Technologist for The STG IT Consulting Group in West Hollywood, California. Stan prov… [+589 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "MakeUseOf"
+            },
+            "author": "Katie Rees",
+            "title": "7 Cybersecurity Trends and Predictions for 2024",
+            "description": "As 2024 draws closer, we look at the challenges and cybersecurity developments likely to play a big part in our New Year celebrations...",
+            "url": "https://www.makeuseof.com/cybersecurity-trends-predictions-next-year/",
+            "urlToImage": "https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2023/10/security-lock-digital.jpg",
+            "publishedAt": "2023-10-25T16:00:20Z",
+            "content": "Cybersecurity is paramount for businesses and individuals alike, with an increasing number of threats popping up every month. So, understanding how the cybersecurity landscape is changing is importan… [+8719 chars]"
+        },
+        {
+            "source": {
+                "id": "politico",
+                "name": "Politico"
+            },
+            "author": "POLITICO Pro Staff",
+            "title": "The 15-issue policy cheat sheet about the new House speaker",
+            "description": "He’s packed a lot in during four terms.",
+            "url": "https://www.politico.com/news/2023/10/25/new-house-speaker-mike-johnson-on-the-issues-00123627",
+            "urlToImage": "https://static.politico.com/d4/88/a4a16ec24ad19959f3316cfd1c39/house-of-representatives-94217.jpg",
+            "publishedAt": "2023-10-25T22:55:46Z",
+            "content": "Cannabis\r\nJohnson has voted against every major piece of cannabis legislation including the SAFE Banking Act, which would make it easier for weed companies to access financial services. That bill enj… [+8717 chars]"
+        },
+        {
+            "source": {
+                "id": "al-jazeera-english",
+                "name": "Al Jazeera English"
+            },
+            "author": "Al Jazeera",
+            "title": "Turkey’s Erdogan scraps Israel trip over ‘inhumane’ Gaza war",
+            "description": "The Turkish leader said Gaza Palestinians were suffering 'collective punishment' and defended Hamas as 'liberators'.",
+            "url": "https://www.aljazeera.com/news/2023/10/25/turkeys-erdogan-scraps-israel-trip-over-inhumane-gaza-war",
+            "urlToImage": "https://www.aljazeera.com/wp-content/uploads/2023/10/2023-10-25T111158Z_1045496184_RC2NZ3A0IUNN_RTRMADP_3_ISRAEL-PALESTINIANS-TURKEY-ERDOGAN-1698234115.jpg?resize=1920%2C1440",
+            "publishedAt": "2023-10-25T13:38:08Z",
+            "content": "Turkish President Recep Tayyip Erdogan has called off a planned visit to Israel over its inhumane war in Gaza, saying relations between the two states would not improve.\r\nWe had a project to go to Is… [+2574 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "PCWorld"
+            },
+            "author": "Roland Freist",
+            "title": "What is a zero day exploit? The most dangerous security attacks, explained",
+            "description": "There are errors (bugs) and security vulnerabilities in the code of almost all software. The more extensive the code, the more there are. Many of these security flaws are discovered over time by users or even by the manufacturer itself and plugged with a patc…",
+            "url": "https://www.pcworld.com/article/2113913/zero-day-exploits-how-to-protect-yourself.html",
+            "urlToImage": "https://www.pcworld.com/wp-content/uploads/2023/10/shutterstock_2010249140.jpg?quality=50&strip=all&w=1024",
+            "publishedAt": "2023-10-25T11:30:00Z",
+            "content": "Skip to contentType your search and hit enter\r\nWhen you purchase through links in our articles, we may earn a small commission. This doesn't affect our editorial independence\r\n.\r\nThere are errors (bu… [+11329 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Mckinsey.com"
+            },
+            "author": null,
+            "title": "Right skills, right person, right role",
+            "description": "A shift from credential-based to skills-based hiring could be a key to filling technical roles amid talent shortages.",
+            "url": "https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/right-skills-right-person-right-role",
+            "urlToImage": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/people%20and%20organizational%20performance/our%20insights/right%20skills%20right%20person%20right%20role/right-skills-right-person-right-role-1424987870-thumb-1536x1536.jpg",
+            "publishedAt": "2023-10-25T00:00:00Z",
+            "content": "With the rise of more technical roles across industries and sectors, and a shortage of people to fill them, skills-based hiring could help organizations access new talent pools. This episode of McKin… [+24235 chars]"
+        },
+        {
+            "source": {
+                "id": "vice-news",
+                "name": "Vice News"
+            },
+            "author": "Maxwell Strachan, Tim Marchman",
+            "title": "Wall Street Embraces AI Despite Risks of Catastrophe",
+            "description": "“One day we will give agency to the systems,” said one person at the forefront; even those who aren’t worried say concern is valid.",
+            "url": "https://www.vice.com/en/article/88xk8k/wall-street-embraces-ai-despite-risks-of-catastrophe",
+            "urlToImage": "https://video-images.vice.com/articles/653850a3723ac073073ba0d4/lede/1698189481072-gettyimages-1220380097-1.jpeg?image-resize-opts=Y3JvcD0xeHc6MXhoO2NlbnRlcixjZW50ZXImcmVzaXplPTEyMDA6KiZyZXNpemU9MTIwMDoq",
+            "publishedAt": "2023-10-25T13:31:33Z",
+            "content": "Across Wall Street, the artificial intelligence arms race is heating up. Vanguard is already using AI to generate retirement portfolios. Morgan Stanley has launched a ChatGPT-fueled assistant for fin… [+11832 chars]"
+        }
+    ]
+}
