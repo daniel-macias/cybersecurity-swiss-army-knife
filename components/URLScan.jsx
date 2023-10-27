@@ -11,23 +11,23 @@ function URLScan({ onScan }) {
   
       // Append the "url" parameter to the form
       formData.append('url', url);
-      console.log(process.env.VT_API_KEY);
+      console.log(process.env.NEXT_PUBLIC_VT_API_KEY);
   
       // Make a POST request to the VirusTotal API with the form data and set the "x-apikey" header
-      //const response = await axios.post('https://www.virustotal.com/api/v3/urls', formData, {
-      //  headers: {
-      //    'x-apikey': process.env.VT_API_KEY, // Set the API key as a header
-      //  },
-      //});
+      const response = await axios.post('https://www.virustotal.com/api/v3/urls', formData, {
+        headers: {
+          'x-apikey': process.env.NEXT_PUBLIC_VT_API_KEY, // Set the API key as a header
+        },
+      });
   
       // Extract the scan result from the response
-      //const scanResult = response.data;
+      const scanResult = response.data;
   
       // Call the onScan callback with the result
-      //onScan(scanResult);
+      onScan(scanResult);
     } catch (error) {
       console.error('Error scanning URL:', error);
-      onScan(error)
+      onScan(error.message)
       // Handle errors as needed
     }
   };

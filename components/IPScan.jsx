@@ -1,12 +1,33 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function IPScan({ onScan }) {
   const [ip, setIP] = useState('');
 
-  const handleScanClick = () => {
-    // Perform data validation and scanning logic as needed
-    const scanResult = {}; // Replace with actual scan result
-    onScan('ip', scanResult);
+  const handleScanClick = async () => {
+    try {
+      // Create a new FormData object
+      const formData = new FormData();
+
+      console.log(process.env.NEXT_PUBLIC_VT_API_KEY);
+  
+      // Make a POST request to the VirusTotal API with the form data and set the "x-apikey" header
+      const response = await axios.get('https://www.virustotal.com/api/v3/ip_addresses/'+ip, {
+        headers: {
+          'x-apikey': process.env.NEXT_PUBLIC_VT_API_KEY, // Set the API key as a header
+        },
+      });
+  
+      // Extract the scan result from the response
+      const scanResult = response.data;
+  
+      // Call the onScan callback with the result
+      onScan(scanResult);
+    } catch (error) {
+      console.error('Error scanning IP:', error);
+      onScan(error.message)
+      // Handle errors as needed
+    }
   };
 
   return (
