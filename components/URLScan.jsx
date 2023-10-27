@@ -1,13 +1,37 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function URLScan({ onScan }) {
   const [url, setUrl] = useState('');
 
-  const handleScanClick = () => {
-    // Perform data validation and scanning logic as needed
-    const scanResult = {}; // Replace with actual scan result
-    onScan('url', scanResult);
+  const handleScanClick = async () => {
+    try {
+      // Create a new FormData object
+      const formData = new FormData();
+  
+      // Append the "url" parameter to the form
+      formData.append('url', url);
+      console.log(process.env.VT_API_KEY);
+  
+      // Make a POST request to the VirusTotal API with the form data and set the "x-apikey" header
+      //const response = await axios.post('https://www.virustotal.com/api/v3/urls', formData, {
+      //  headers: {
+      //    'x-apikey': process.env.VT_API_KEY, // Set the API key as a header
+      //  },
+      //});
+  
+      // Extract the scan result from the response
+      //const scanResult = response.data;
+  
+      // Call the onScan callback with the result
+      //onScan(scanResult);
+    } catch (error) {
+      console.error('Error scanning URL:', error);
+      onScan(error)
+      // Handle errors as needed
+    }
   };
+  
 
   return (
     <div className="grid grid-cols-6 gap-4">

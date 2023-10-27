@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
-function URLResults() {
+function URLResults({ data }) {
+  // Create a state variable to hold the data
+  const [resultData, setResultData] = useState(data);
+
+  // Use the useEffect hook to update the data when the prop 'data' changes
+  useEffect(() => {
+    setResultData(data);
+  }, [data]);
+
   return (
-    <div>URLResults</div>
-  )
+    <div>
+      <h2>URL Results</h2>
+      <pre>{JSON.stringify(resultData, null, 2)}</pre>
+    </div>
+  );
 }
 
-export default URLResults
+export default URLResults;

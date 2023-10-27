@@ -10,6 +10,9 @@ import IPResults from './Results/IPResults';
 import FileResults from './Results/FileResults';
 import DomainResults from './Results/DomainResults';
 
+import { AiOutlineSecurityScan } from "react-icons/ai";
+
+
 function Main() {
 
   const [currentScanType, setCurrentScanType] = useState(null);
@@ -18,6 +21,7 @@ function Main() {
   const handleScan = (scanType, data) => {
     setCurrentScanType(scanType);
     setScanData(data);
+    console.log(data);
   };
 
 
@@ -34,13 +38,14 @@ function Main() {
         </div>
         {/* Left Top (2/3) */}
         <div className="h-5/6 p-2">
-          <div className="bg-[#28282d] h-full rounded-md p-4">
+          <div className="bg-[#28282d] h-full rounded-md p-4 flex items-center justify-center">
             {/* Content for the top left section */}
             <div>
               {/* Choose the appropriate scan component based on the currentScanType */}
               {currentScanType === null && (
-                <div>
-                  PLEASE SCAN
+                <div className="flex flex-col items-center text-center">
+                  <h1 className="text-2xl mb-4">Please choose a scanning option of your choosing and press "scan"</h1>
+                  <p className="text-6xl"><AiOutlineSecurityScan /></p>
                 </div>
               )}
               {currentScanType === 'url' && (
