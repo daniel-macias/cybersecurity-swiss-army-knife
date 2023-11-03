@@ -26,18 +26,18 @@ function Main() {
 
 
   return (
-    <div className="h-screen flex">
+    <div className="h-screen grid grid-cols-2">
       {/* Left Half */}
       
-      <div className="w-1/2 flex flex-col">
-                {/* Left Bottom (1/3) */}
-                <div className="h-1/6 p-2">
+      <div className="grid grid-rows-6 col-span-1">
+                {/* Left Bottom (1/6) */}
+                <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
           <div className="bg-[#28282d] h-full rounded-md p-4">
             {/* Content for the bottom left section */}
           </div>
         </div>
-        {/* Left Top (2/3) */}
-        <div className="h-5/6 p-2">
+        {/* Left Top (5/6) */}
+        <div className="row-span-5 bg-[#28282d] h-full rounded-md p-4 flex items-center justify-center">
           <div className="bg-[#28282d] h-full rounded-md p-4 flex items-center justify-center">
             {/* Content for the top left section */}
             <div>
@@ -68,33 +68,25 @@ function Main() {
       </div>
 
       {/* Right Half */}
-      <div className="w-1/2 flex flex-col">
+      <div className="grid grid-rows-4 col-span-1">
         {/* Right Top (1/4) */}
-        <div className="flex-1 p-2">
-          <div className="bg-[#28282d] h-full rounded-md p-4">
+        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
             <FileScan onScan={(data) => handleScan('file', data)} />
-          </div>
         </div>
 
         {/* Right Top (1/4) */}
-        <div className="flex-1 p-2">
-          <div className="bg-[#28282d] h-full rounded-md p-4">
+        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
             <URLScan onScan={(data) => handleScan('url', data)} />
-          </div>
         </div>
 
         {/* Right Top (1/4) */}
-        <div className="flex-1 p-2">
-          <div className="bg-[#28282d] h-full rounded-md p-4">
+        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
             <IPScan onScan={(data) => handleScan('ip', data)} />
-          </div>
         </div>
 
         {/* Right Top (1/4) */}
-        <div className="flex-1 p-2">
-          <div className="bg-[#28282d] h-full rounded-md p-4">
+        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
             <DomainScan onScan={(data) => handleScan('domain', data)} />
-          </div>
         </div>
       </div>
     </div>

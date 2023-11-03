@@ -146,28 +146,34 @@ function FileResults({ data }) {
     </div>
     <div className="col-span-1 bg-[#444347] rounded-md p-4 grow-0">
       <p className="text-center text-[#b7b6ba]  text-lg">Summary</p>
-      <div className="h-5/6 overflow-auto">
-      {analysesData.data && analysesData.data.attributes ? (
-      <>
-        {Object.keys(analysesData.data.attributes.stats).map((key) => (
-          <p key={key} className="text-[#b7b6ba] text-xs">
-            {key}: {analysesData.data.attributes.stats[key]}
-          </p>
-        ))}
-        <p className="text-[#b7b6ba] text-xs">
-          Total: {Object.values(analysesData.data.attributes.stats).reduce((total, value) => total + value, 0)}
-        </p>
-      </>) : (
-        <p className="text-[#b7b6ba]">No data available.</p>
-      )}
+      <div className="grid grid-rows-6">
+        <div className="row-span-5">
+          {analysesData.data && analysesData.data.attributes ? (
+          <>
+            {Object.keys(analysesData.data.attributes.stats).map((key) => (
+              <p key={key} className="text-[#b7b6ba] text-xs">
+                {key}: {analysesData.data.attributes.stats[key]}
+              </p>
+            ))}
+            <p className="text-[#b7b6ba] text-xs">
+              Total: {Object.values(analysesData.data.attributes.stats).reduce((total, value) => total + value, 0)}
+            </p>
+          </>
+          ) : (
+            <p className="text-[#b7b6ba]">No data available.</p>
+          )}
 
-      <hr className="my-2"/>
+          <hr className="my-2"/>
+        </div>
+
+        <div className="row-span-1">
+          <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
+            Get Report
+          </button>
+        </div>
+        
       </div>
-      <div className="h-1/6 p-2">
-      <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
-        Get Report
-      </button>
-      </div>
+      
     </div>
   </div>
   );

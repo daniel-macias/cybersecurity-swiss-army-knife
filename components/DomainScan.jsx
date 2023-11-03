@@ -43,8 +43,8 @@ function DomainScan({ onScan }) {
           value={domain}
           onChange={(e) => setDomain(e.target.value)}
         />
-        <p className="mt-1 text-sm text-gray-500" id="domainscan_input_help">
-          HELP HELP
+        <p className="mt-1 text-sm text-gray-400" id="domainscan_input_help">
+          Enter a domain to get general information on it
         </p>
       </div>
       <div className="col-span-1">

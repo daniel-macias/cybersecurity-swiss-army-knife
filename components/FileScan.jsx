@@ -47,8 +47,8 @@ function FileScan({ onScan }) {
           aria-describedby="file_input_help"
           onChange={handleFileChange}
         />
-        <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
-          SVG, PNG, JPG, or GIF (MAX. 800x400px).
+        <p className="mt-1 text-sm text-gray-400" id="file_input_help">
+          Please upload a file smaller than 32MB
         </p>
       </div>
       <div className="col-span-1">

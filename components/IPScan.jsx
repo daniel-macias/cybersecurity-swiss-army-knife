@@ -44,8 +44,8 @@ function IPScan({ onScan }) {
           value={ip}
           onChange={(e) => setIP(e.target.value)}
         />
-        <p className="mt-1 text-sm text-gray-500" id="ipscan_input_help">
-          HELP HELP
+        <p className="mt-1 text-sm text-gray-400" id="ipscan_input_help">
+          Only IPv4 Addresses allowed, just as the example provided
         </p>
       </div>
       <div className="col-span-1">
