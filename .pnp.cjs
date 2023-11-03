@@ -33,11 +33,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.2.14"],\
             ["autoprefixer", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:10.4.16"],\
             ["axios", "npm:1.5.1"],\
+            ["chart.js", "npm:4.4.0"],\
             ["eslint", "npm:8.52.0"],\
             ["eslint-config-next", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:13.5.6"],\
             ["next", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:13.5.6"],\
             ["postcss", "npm:8.4.31"],\
             ["react", "npm:18.2.0"],\
+            ["react-chartjs-2", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:5.2.0"],\
             ["react-dom", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:18.2.0"],\
             ["react-icons", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:4.11.0"],\
             ["tailwindcss", "npm:3.3.5"],\
@@ -233,6 +235,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@jridgewell/trace-mapping", "npm:0.3.20"],\
             ["@jridgewell/resolve-uri", "npm:3.1.1"],\
             ["@jridgewell/sourcemap-codec", "npm:1.4.15"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@kurkle/color", [\
+        ["npm:0.3.2", {\
+          "packageLocation": "./.yarn/cache/@kurkle-color-npm-0.3.2-98f2086013-79e97b31f8.zip/node_modules/@kurkle/color/",\
+          "packageDependencies": [\
+            ["@kurkle/color", "npm:0.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1100,6 +1111,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["chart.js", [\
+        ["npm:4.4.0", {\
+          "packageLocation": "./.yarn/cache/chart.js-npm-4.4.0-ccf7d4ad14-5ee2d99b78.zip/node_modules/chart.js/",\
+          "packageDependencies": [\
+            ["chart.js", "npm:4.4.0"],\
+            ["@kurkle/color", "npm:0.3.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["chokidar", [\
         ["npm:3.5.3", {\
           "packageLocation": "./.yarn/cache/chokidar-npm-3.5.3-c5f9b0a56a-b49fcde401.zip/node_modules/chokidar/",\
@@ -1249,11 +1270,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.2.14"],\
             ["autoprefixer", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:10.4.16"],\
             ["axios", "npm:1.5.1"],\
+            ["chart.js", "npm:4.4.0"],\
             ["eslint", "npm:8.52.0"],\
             ["eslint-config-next", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:13.5.6"],\
             ["next", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:13.5.6"],\
             ["postcss", "npm:8.4.31"],\
             ["react", "npm:18.2.0"],\
+            ["react-chartjs-2", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:5.2.0"],\
             ["react-dom", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:18.2.0"],\
             ["react-icons", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:4.11.0"],\
             ["tailwindcss", "npm:3.3.5"],\
@@ -4008,6 +4031,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["react", "npm:18.2.0"],\
             ["loose-envify", "npm:1.4.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-chartjs-2", [\
+        ["npm:5.2.0", {\
+          "packageLocation": "./.yarn/cache/react-chartjs-2-npm-5.2.0-03632f5179-ace702185b.zip/node_modules/react-chartjs-2/",\
+          "packageDependencies": [\
+            ["react-chartjs-2", "npm:5.2.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:5.2.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-chartjs-2-virtual-5b70025def/0/cache/react-chartjs-2-npm-5.2.0-03632f5179-ace702185b.zip/node_modules/react-chartjs-2/",\
+          "packageDependencies": [\
+            ["react-chartjs-2", "virtual:0bb9e8f3b4ec5026329735333d53d3ad25807a5a6d8624d8d978a7f1a39a87cbc1bb3c344c6c03f83d50aaf059844c7c45ff40fb1e7f45a810d9be42b634a091#npm:5.2.0"],\
+            ["@types/chart.js", null],\
+            ["@types/react", "npm:18.2.32"],\
+            ["chart.js", "npm:4.4.0"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/chart.js",\
+            "@types/react",\
+            "chart.js",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
