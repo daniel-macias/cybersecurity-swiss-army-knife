@@ -43,14 +43,14 @@ function FileResults({ data }) {
       console.log(values);
       // You can set colors for the chart segments here
       const backgroundColor = [
-        'red',
-        'blue',
         'green',
+        'cyan',
         'orange',
+        'yellow',
         'purple',
         'pink',
-        'yellow',
-        'cyan',
+        'red',
+        'blue',
       ];
   
       setChartData({
@@ -59,13 +59,38 @@ function FileResults({ data }) {
           {
             data: values,
             backgroundColor,
+            borderWidth: 0,
           },
+          
         ],
+        
       });
 
+      const cleanedData = {
+        labels: [],
+        datasets: [
+          {
+            data: [],
+            backgroundColor: [],
+            borderWidth: 0
+          }
+        ]
+      };
+
+      chartData.labels.forEach((label, index) => {
+        if (chartData.datasets[0].data[index] > 0) {
+          cleanedData.labels.push(label);
+          cleanedData.datasets[0].data.push(chartData.datasets[0].data[index]);
+          cleanedData.datasets[0].backgroundColor.push(chartData.datasets[0].backgroundColor[index]);
+        }
+      });
+
+      setChartData(cleanedData);
       console.log("Chart Data")
       console.log(chartData);
     }
+
+
 
   }, [analysesData]);
 
@@ -95,21 +120,25 @@ function FileResults({ data }) {
   };
 
   return (
-    <div>
-      <h2>File Results</h2>
+  <div className="grid grid-cols-3">
+    <div className="col-span-2">
+      <h2 className="text-2xl">File Results</h2>
       <div>
         {chartData.labels.length > 0 ? (
-          <><Doughnut data={chartData} />
-          <h3>Date: {unixTimestampToDateString(analysesData.data.attributes.date)}</h3>
-          <h3>Status: {analysesData.data.attributes.status}</h3>
+          <>
+            <h3>Scan Date: {unixTimestampToDateString(analysesData.data.attributes.date)}</h3>
+            <h3>Status: {analysesData.data.attributes.status}</h3>
+            <Doughnut data={chartData} />
           </>
-          
-          
         ) : (
           <p>No data available for the chart.</p>
         )}
       </div>
     </div>
+    <div className="col-span-1 bg-[#444347] rounded-md p-4">
+      Summary
+    </div>
+  </div>
   );
 }
 
