@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 import { Doughnut } from 'react-chartjs-2';
+import { AiOutlineDownload } from "react-icons/ai";
 
 function unixTimestampToDateString(unixTimestamp) {
   const date = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds
@@ -24,6 +25,10 @@ function FileResults({ data }) {
       },
     ],
   });
+
+  const handleScanClick = async () => {
+    console.log("SDOWN");
+  };
 
   // Use the useEffect hook to update the data when the prop 'data' changes
   useEffect(() => {
@@ -76,7 +81,7 @@ function FileResults({ data }) {
           }
         ]
       };
-
+/*
       chartData.labels.forEach((label, index) => {
         if (chartData.datasets[0].data[index] > 0) {
           cleanedData.labels.push(label);
@@ -84,8 +89,8 @@ function FileResults({ data }) {
           cleanedData.datasets[0].backgroundColor.push(chartData.datasets[0].backgroundColor[index]);
         }
       });
-
       setChartData(cleanedData);
+*/
       console.log("Chart Data")
       console.log(chartData);
     }
@@ -124,19 +129,45 @@ function FileResults({ data }) {
     <div className="col-span-2">
       <h2 className="text-2xl">File Results</h2>
       <div>
-        {chartData.labels.length > 0 ? (
+        {analysesData.data && analysesData.data.attributes && chartData.labels.length > 0 ? (
           <>
             <h3>Scan Date: {unixTimestampToDateString(analysesData.data.attributes.date)}</h3>
             <h3>Status: {analysesData.data.attributes.status}</h3>
             <Doughnut data={chartData} />
           </>
         ) : (
-          <p>No data available for the chart.</p>
+          <p>Your data is queued, please press "scan" again in a minute.
+            This should be done manually as this project uses the free tier of an API and to not make constant API calls. Thanks!
+          </p>
+          
         )}
+        
       </div>
     </div>
-    <div className="col-span-1 bg-[#444347] rounded-md p-4">
-      Summary
+    <div className="col-span-1 bg-[#444347] rounded-md p-4 grow-0">
+      <p className="text-center text-[#b7b6ba]  text-lg">Summary</p>
+      <div className="h-5/6 overflow-auto">
+      {analysesData.data && analysesData.data.attributes ? (
+      <>
+        {Object.keys(analysesData.data.attributes.stats).map((key) => (
+          <p key={key} className="text-[#b7b6ba] text-xs">
+            {key}: {analysesData.data.attributes.stats[key]}
+          </p>
+        ))}
+        <p className="text-[#b7b6ba] text-xs">
+          Total: {Object.values(analysesData.data.attributes.stats).reduce((total, value) => total + value, 0)}
+        </p>
+      </>) : (
+        <p className="text-[#b7b6ba]">No data available.</p>
+      )}
+
+      <hr className="my-2"/>
+      </div>
+      <div className="h-1/6 p-2">
+      <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
+        Get Report
+      </button>
+      </div>
     </div>
   </div>
   );
