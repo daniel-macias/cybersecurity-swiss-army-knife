@@ -26,12 +26,12 @@ function Main() {
 
 
   return (
-    <div className="h-screen grid lg:grid-cols-5 max-h-screen-xl mx-auto">
+    <div className="min-h-screen grid lg:grid-cols-5 max-h-screen-xl mx-auto">
       {/* Left Half */}
       
-      <div className="grid lg:grid-rows-6 lg:col-span-3">
-                {/* Left Bottom (1/6) */}
-                <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
+      <div className="grid lg:grid-rows-6 lg:col-span-3 h-full">
+        {/* Left Bottom (1/6) */}
+        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
           <div className="bg-[#28282d] h-full rounded-md p-4">
             {/* Content for the bottom left section */}
           </div>

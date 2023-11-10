@@ -86,19 +86,39 @@ function IPResults({ data }) {
   }, [data]);
 
   return (
-    <div className="h-screen">
-      <div className="grid lg:grid-cols-2 h-full">
-        <div className="lg:col-span-1 h-full">
-          A
-        </div>
-        <div className="lg:col-span-1 lg:h-full">
-          <div className="grid lg:grid-rows-2 h-full">
-            <div className="lg:col-span-1 h-full">
-              <Doughnut data={urlChartData} />
-            </div>
-            <div className="lg:col-span-1 h-full">
-              <Doughnut data={urlChartData} />
-            </div>
+    <div className="grid lg:grid-cols-2 h-full">
+      <div className="lg:col-span-1">
+        A
+        {/* You can include any content or components here */}
+      </div>
+      <div className="lg:col-span-1 lg:h-full">
+        <div className="grid lg:grid-rows-2 h-full">
+          <div className="lg:row-span-1 h-full">
+          <Doughnut 
+            data={urlChartData} 
+            options={{ 
+              plugins: { 
+                legend: { 
+                  display: false 
+                } 
+              } 
+            }} 
+  className="h-1/2" 
+/>
+          </div>
+          <div className="lg:row-span-1 h-full">
+            s
+          <Doughnut 
+            data={urlChartData} 
+            options={{ 
+              plugins: { 
+                legend: { 
+                  display: false 
+                } 
+              } 
+            }} 
+            className="h-1/2" 
+          />
           </div>
         </div>
       </div>
