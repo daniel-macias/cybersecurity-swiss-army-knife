@@ -6,11 +6,7 @@ import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 import { Doughnut } from 'react-chartjs-2';
 import { AiOutlineDownload } from "react-icons/ai";
-
-function unixTimestampToDateString(unixTimestamp) {
-  const date = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds
-  return date.toISOString(); // Returns a string like "2023-04-05T14:30:00.000Z"
-}
+import { unixTimestampToDateString } from '../../utils/dateUtils';
 
 function FileResults({ data }) {
   // Create a state variable to hold the data

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { AiOutlineSecurityScan } from "react-icons/ai";
 
 function DomainScan({ onScan }) {
   const [domain, setDomain] = useState('');
@@ -48,14 +49,14 @@ function DomainScan({ onScan }) {
         </p>
       </div>
       <div className="col-span-1">
-        <button
-          className="w-full h-full py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-          type="button"
-          onClick={handleScanClick}
-        >
-          Scan
-        </button>
-      </div>
+  <button
+    className="h-full py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 flex items-center"
+    type="button"
+    onClick={handleScanClick}
+  >
+    <p className="text-4xl text-center"><AiOutlineSecurityScan /></p>
+  </button>
+</div>
     </div>
   );
 }
