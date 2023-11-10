@@ -26,10 +26,10 @@ function Main() {
 
 
   return (
-    <div className="h-screen grid grid-cols-2">
+    <div className="h-screen grid lg:grid-cols-5 max-h-screen-xl mx-auto">
       {/* Left Half */}
       
-      <div className="grid grid-rows-6 col-span-1">
+      <div className="grid lg:grid-rows-6 lg:col-span-3">
                 {/* Left Bottom (1/6) */}
                 <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
           <div className="bg-[#28282d] h-full rounded-md p-4">
@@ -37,7 +37,7 @@ function Main() {
           </div>
         </div>
         {/* Left Top (5/6) */}
-        <div className="row-span-5 bg-[#28282d] h-full rounded-md p-4 flex items-center justify-center">
+        <div className="lg:row-span-5 bg-[#28282d] h-full rounded-md p-4 flex items-center justify-center">
           <div className="bg-[#28282d] h-full rounded-md p-4 flex items-center justify-center">
             {/* Content for the top left section */}
             <div>
@@ -68,24 +68,24 @@ function Main() {
       </div>
 
       {/* Right Half */}
-      <div className="grid grid-rows-4 col-span-1">
+      <div className="grid lg:grid-rows-4 lg:col-span-2">
         {/* Right Top (1/4) */}
-        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
+        <div className="lg:row-span-1 bg-[#28282d] h-full rounded-md p-4">
             <FileScan onScan={(data) => handleScan('file', data)} />
         </div>
 
         {/* Right Top (1/4) */}
-        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
+        <div className="lg:row-span-1 bg-[#28282d] h-full rounded-md p-4">
             <URLScan onScan={(data) => handleScan('url', data)} />
         </div>
 
         {/* Right Top (1/4) */}
-        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
+        <div className="lg:row-span-1 bg-[#28282d] h-full rounded-md p-4">
             <IPScan onScan={(data) => handleScan('ip', data)} />
         </div>
 
         {/* Right Top (1/4) */}
-        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
+        <div className="lg:row-span-1 bg-[#28282d] h-full rounded-md p-4">
             <DomainScan onScan={(data) => handleScan('domain', data)} />
         </div>
       </div>

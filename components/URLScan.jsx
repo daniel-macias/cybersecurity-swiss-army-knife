@@ -47,7 +47,7 @@ function URLScan({ onScan }) {
           onChange={(e) => setUrl(e.target.value)}
         />
         <p className="mt-1 text-sm text-gray-400" id="urlscan_input_help">
-          Enter a valid URL to get reports on possible malware
+          Enter a URL to get reports on possible malware
         </p>
       </div>
       <div className="col-span-1">

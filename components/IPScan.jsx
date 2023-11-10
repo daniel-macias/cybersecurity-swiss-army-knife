@@ -45,12 +45,12 @@ function IPScan({ onScan }) {
           onChange={(e) => setIP(e.target.value)}
         />
         <p className="mt-1 text-sm text-gray-400" id="ipscan_input_help">
-          Only IPv4 Addresses allowed, just as the example provided
+          Only IPv4 Addresses allowed
         </p>
       </div>
       <div className="col-span-1">
         <button
-          className="w-full h-full py-2 px-2 bg-blue-500 text-white rounded hover-bg-blue-700"
+          className="w-full h-full py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700"
           type="button"
           onClick={handleScanClick}
         >
