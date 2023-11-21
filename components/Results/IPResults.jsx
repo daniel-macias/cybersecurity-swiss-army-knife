@@ -111,7 +111,7 @@ function IPResults({ data }) {
   return (
     <div >
       <div>
-        <h1>sad asdasd</h1>HOLA
+        <h2>sad asdasd</h2>HOLA
         <p>jeje</p>
       </div>
       <div className="grid md:grid-cols-2 h-full">
