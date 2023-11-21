@@ -5,6 +5,8 @@ import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { unixTimestampToDateString } from '../../utils/dateUtils';
+import { downloadJson } from '../../utils/jsonUtils';
+import { MdOutlineSecurity } from "react-icons/md";
 
 function DomainResults({ data }) {
 
@@ -111,27 +113,39 @@ function DomainResults({ data }) {
 
   return (
     <div >
-      <div>
-        <h2>sad asdasd</h2>HOLA
-        <p>jeje</p>
+      <div className="flex items-center pb-4">
+        <MdOutlineSecurity size={36} className="text-blue-500" /> {/* Adjust the size and color as needed */}
+        <h2 className="ml-4 text-x2">Infosec MultiTool</h2> {/* Adjust the margin and text size as needed */}
       </div>
       <div className="grid md:grid-cols-2 h-full">
         <div className="md:col-span-1 text-[#b7b6ba] text-xs">
-          <p>Owner:</p>
-          <p>{data.data.attributes.as_owner}</p>
-          <p>Country: {data.data.attributes.country}</p>
-          <p className="pt-2">Last Analysis</p>
+          <strong>Name:</strong>
+          <p>{data.data.id}</p>
+          <strong className="pt-2">Registrar</strong>
+          <p>{data.data.attributes.registrar}</p>
+          <strong className="pt-2">Last DNS Records</strong>
+          <p>{unixTimestampToDateString(data.data.attributes.last_dns_records_date)}</p>
+          <strong className="pt-2">Last Analysis</strong>
           <p>{unixTimestampToDateString(data.data.attributes.last_analysis_date)}</p>
-          <p className="pt-2">Last HTTPS Certificate</p>
+          <strong className="pt-2">Last HTTPS Certificate</strong>
           <p>{unixTimestampToDateString(data.data.attributes.last_https_certificate_date)}</p>
-          <p className="pt-2">Network</p>
-          <p>{data.data.attributes.network}</p>
-          <p className="pt-2">Regional Internet Registry</p>
-          <p>{data.data.attributes.regional_internet_registry}</p>
-          <p className="pt-2">VirusTotal Reputation Score</p>
-          <p>{data.data.attributes.reputation}</p>
+          
+          <strong className="pt-2">Popularity Rank</strong>
+          <ul>
+            {Object.keys(data.data.attributes.popularity_ranks).map((website, index) => (
+              <li key={index}>
+                <strong>{website}:</strong> Rank {data.data.attributes.popularity_ranks[website].rank}
+              </li>
+            ))}
+          </ul>
+
+          <strong className="pt-2">Whois</strong>
+          <p></p>
+          <a href={`https://www.whois.com/whois/${data.data.id}`} target="_blank" rel="noopener noreferrer">
+            {data.data.id}
+          </a>
           <hr className="py-4"/>
-          <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
+          <button onClick={() => downloadJson(data, "domainresults.json")} className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
               Download Full Report
           </button>
 
@@ -139,7 +153,7 @@ function DomainResults({ data }) {
         <div className="md:col-span-1 md:h-full">
           <div className="grid md:grid-rows-2 h-full">
             <div className="md:row-span-1 h-full">
-              <p className="text-center text-[#b7b6ba] text-xs pb-2">URL Aggregate Scan Results</p>
+              <p className="text-center text-[#b7b6ba] text-xs pb-2">Domain Aggregate Scan Results</p>
               <Doughnut 
                 data={urlChartData} 
                 options={{ 

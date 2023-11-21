@@ -7,6 +7,8 @@ import Chart from "chart.js/auto";
 import { Doughnut } from 'react-chartjs-2';
 import { AiOutlineDownload } from "react-icons/ai";
 import { unixTimestampToDateString } from '../../utils/dateUtils';
+import { downloadJson } from '../../utils/jsonUtils';
+import { MdOutlineSecurity } from "react-icons/md";
 
 function FileResults({ data }) {
   // Create a state variable to hold the data
@@ -122,8 +124,9 @@ function FileResults({ data }) {
 
   return (
     <div>
-      <div>
-        <h1>Test</h1>
+      <div className="flex items-center pb-4">
+        <MdOutlineSecurity size={36} className="text-blue-500" /> {/* Adjust the size and color as needed */}
+        <h2 className="ml-4 text-x2">Infosec MultiTool</h2> {/* Adjust the margin and text size as needed */}
       </div>
       <div className="grid grid-cols-3">
         <div className="col-span-2">
@@ -167,7 +170,7 @@ function FileResults({ data }) {
             </div>
 
             <div className="row-span-1">
-              <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
+              <button onClick={() => downloadJson(data, "fileresults.json")} className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
                 Get Report
               </button>
             </div>

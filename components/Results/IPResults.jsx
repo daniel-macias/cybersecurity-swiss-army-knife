@@ -5,6 +5,8 @@ import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 import { Doughnut, Bar } from 'react-chartjs-2';
 import { unixTimestampToDateString } from '../../utils/dateUtils';
+import { downloadJson } from '../../utils/jsonUtils';
+import { MdOutlineSecurity } from "react-icons/md";
 
 function IPResults({ data }) {
   // Create a state variable to hold the data
@@ -110,10 +112,10 @@ function IPResults({ data }) {
 
   return (
     <div >
-      <div>
-        <h2>sad asdasd</h2>HOLA
-        <p>jeje</p>
-      </div>
+        <div className="flex items-center pb-4">
+          <MdOutlineSecurity size={36} className="text-blue-500" /> {/* Adjust the size and color as needed */}
+          <h2 className="ml-4 text-x2">Infosec MultiTool</h2> {/* Adjust the margin and text size as needed */}
+        </div>
       <div className="grid md:grid-cols-2 h-full">
         <div className="md:col-span-1 text-[#b7b6ba] text-xs">
           <p>Owner:</p>
@@ -130,7 +132,7 @@ function IPResults({ data }) {
           <p className="pt-2">VirusTotal Reputation Score</p>
           <p>{data.data.attributes.reputation}</p>
           <hr className="py-4"/>
-          <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
+          <button onClick={() => downloadJson(data, "ipresults.json")} className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
               Download Full Report
           </button>
 
