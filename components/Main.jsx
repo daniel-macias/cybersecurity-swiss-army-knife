@@ -31,14 +31,9 @@ function Main() {
       
       <div className="grid md:grid-rows-6 md:col-span-3 h-full">
         {/* Left Bottom (1/6) */}
-        <div className="row-span-1 bg-[#28282d] h-full rounded-md p-4">
-          <div className="bg-[#28282d] h-full rounded-md p-4">
-            {/* Content for the bottom left section */}
-            <h3>Testing</h3>
-          </div>
-        </div>
+
         {/* Left Top (5/6) */}
-        <div className="md:row-span-5 bg-[#28282d] h-full rounded-md p-4 flex items-center justify-center">
+        <div className="md:row-span-6 bg-[#28282d] h-full rounded-md p-4 flex items-center justify-center">
           <div className="bg-[#28282d] h-full rounded-md p-4 flex items-center justify-center">
             {/* Content for the top left section */}
             <div>

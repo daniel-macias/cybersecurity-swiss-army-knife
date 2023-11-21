@@ -109,68 +109,75 @@ function IPResults({ data }) {
   }, [data]);
 
   return (
-    <div className="grid md:grid-cols-2 h-full">
-      <div className="md:col-span-1 text-[#b7b6ba] text-xs">
-        <p>Owner:</p>
-        <p>{data.data.attributes.as_owner}</p>
-        <p>Country: {data.data.attributes.country}</p>
-        <p className="pt-2">Last Analysis</p>
-        <p>{unixTimestampToDateString(data.data.attributes.last_analysis_date)}</p>
-        <p className="pt-2">Last HTTPS Certificate</p>
-        <p>{unixTimestampToDateString(data.data.attributes.last_https_certificate_date)}</p>
-        <p className="pt-2">Network</p>
-        <p>{data.data.attributes.network}</p>
-        <p className="pt-2">Regional Internet Registry</p>
-        <p>{data.data.attributes.regional_internet_registry}</p>
-        <p className="pt-2">VirusTotal Reputation Score</p>
-        <p>{data.data.attributes.reputation}</p>
-        <hr className="py-4"/>
-        <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
-            Download Full Report
-        </button>
-
+    <div >
+      <div>
+        <h1>sad asdasd</h1>HOLA
+        <p>jeje</p>
       </div>
-      <div className="md:col-span-1 md:h-full">
-        <div className="grid md:grid-rows-2 h-full">
-          <div className="md:row-span-1 h-full">
-            <p className="text-center text-[#b7b6ba] text-xs pb-2">URL Aggregate Scan Results</p>
-            <Doughnut 
-              data={urlChartData} 
-              options={{ 
-                plugins: { 
-                  legend: { 
-                    display: false 
+      <div className="grid md:grid-cols-2 h-full">
+        <div className="md:col-span-1 text-[#b7b6ba] text-xs">
+          <p>Owner:</p>
+          <p>{data.data.attributes.as_owner}</p>
+          <p>Country: {data.data.attributes.country}</p>
+          <p className="pt-2">Last Analysis</p>
+          <p>{unixTimestampToDateString(data.data.attributes.last_analysis_date)}</p>
+          <p className="pt-2">Last HTTPS Certificate</p>
+          <p>{unixTimestampToDateString(data.data.attributes.last_https_certificate_date)}</p>
+          <p className="pt-2">Network</p>
+          <p>{data.data.attributes.network}</p>
+          <p className="pt-2">Regional Internet Registry</p>
+          <p>{data.data.attributes.regional_internet_registry}</p>
+          <p className="pt-2">VirusTotal Reputation Score</p>
+          <p>{data.data.attributes.reputation}</p>
+          <hr className="py-4"/>
+          <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
+              Download Full Report
+          </button>
+
+        </div>
+        <div className="md:col-span-1 md:h-full">
+          <div className="grid md:grid-rows-2 h-full">
+            <div className="md:row-span-1 h-full">
+              <p className="text-center text-[#b7b6ba] text-xs pb-2">URL Aggregate Scan Results</p>
+              <Doughnut 
+                data={urlChartData} 
+                options={{ 
+                  plugins: { 
+                    legend: { 
+                      display: false 
+                    } 
                   } 
-                } 
-              }} 
-              className="h-5" 
-            />
-          </div>
-          <div className="md:row-span-1 h-full">
-            <p className="text-center text-[#b7b6ba] text-xs p-2 pt-8">Virus Total Reputation</p>
-            <Bar 
-              data={votesChartData} 
-              options={{ 
-                indexAxis: 'y',
-                scales: { 
-                  x: { 
-                    stacked: true 
+                }} 
+                className="h-5" 
+              />
+            </div>
+            <div className="md:row-span-1 h-full">
+              <p className="text-center text-[#b7b6ba] text-xs p-2 pt-8">Virus Total Reputation</p>
+              <Bar 
+                data={votesChartData} 
+                options={{ 
+                  indexAxis: 'y',
+                  scales: { 
+                    x: { 
+                      stacked: true 
+                    },
+                    y: {
+                      stacked: true
+                    } 
                   },
-                  y: {
-                    stacked: true
-                  } 
-                },
-                plugins: { 
-                  legend: { 
-                    display: false 
-                  } 
-                }  
-              }} 
-              className="h-5" 
-            />
+                  plugins: { 
+                    legend: { 
+                      display: false 
+                    } 
+                  }  
+                }} 
+                className="h-5" 
+              />
+            </div>
           </div>
         </div>
       </div>
+      
     </div>
   );
   
