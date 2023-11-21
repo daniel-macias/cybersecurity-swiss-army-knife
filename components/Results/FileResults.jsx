@@ -121,57 +121,63 @@ function FileResults({ data }) {
   };
 
   return (
-  <div className="grid grid-cols-3">
-    <div className="col-span-2">
-      <h2 className="text-2xl">File Results</h2>
+    <div>
       <div>
-        {analysesData.data && analysesData.data.attributes && chartData.labels.length > 0 ? (
-          <>
-            <h3>Scan Date: {unixTimestampToDateString(analysesData.data.attributes.date)}</h3>
-            <h3>Status: {analysesData.data.attributes.status}</h3>
-            <Doughnut data={chartData} />
-          </>
-        ) : (
-          <p>Your data is queued, please press "scan" again in a minute.
-            This should be done manually as this project uses the free tier of an API and to not make constant API calls. Thanks!
-          </p>
-          
-        )}
-        
+        <h1>Test</h1>
       </div>
-    </div>
-    <div className="col-span-1 bg-[#444347] rounded-md p-4 grow-0">
-      <p className="text-center text-[#b7b6ba]  text-lg">Summary</p>
-      <div className="grid grid-rows-6">
-        <div className="row-span-5">
-          {analysesData.data && analysesData.data.attributes ? (
-          <>
-            {Object.keys(analysesData.data.attributes.stats).map((key) => (
-              <p key={key} className="text-[#b7b6ba] text-xs">
-                {key}: {analysesData.data.attributes.stats[key]}
+      <div className="grid grid-cols-3">
+        <div className="col-span-2">
+          <h2 className="text-2xl">File Results</h2>
+          <div>
+            {analysesData.data && analysesData.data.attributes && chartData.labels.length > 0 ? (
+              <>
+                <h3>Scan Date: {unixTimestampToDateString(analysesData.data.attributes.date)}</h3>
+                <h3>Status: {analysesData.data.attributes.status}</h3>
+                <Doughnut data={chartData} />
+              </>
+            ) : (
+              <p>Your data is queued, please press "scan" again in a minute.
+                This should be done manually as this project uses the free tier of an API and to not make constant API calls. Thanks!
               </p>
-            ))}
-            <p className="text-[#b7b6ba] text-xs">
-              Total: {Object.values(analysesData.data.attributes.stats).reduce((total, value) => total + value, 0)}
-            </p>
-          </>
-          ) : (
-            <p className="text-[#b7b6ba]">No data available.</p>
-          )}
-
-          <hr className="my-2"/>
+              
+            )}
+            
+          </div>
         </div>
+        <div className="col-span-1 bg-[#444347] rounded-md p-4 grow-0">
+          <p className="text-center text-[#b7b6ba]  text-lg">Summary</p>
+          <div className="grid grid-rows-6">
+            <div className="row-span-5">
+              {analysesData.data && analysesData.data.attributes ? (
+              <>
+                {Object.keys(analysesData.data.attributes.stats).map((key) => (
+                  <p key={key} className="text-[#b7b6ba] text-xs">
+                    {key}: {analysesData.data.attributes.stats[key]}
+                  </p>
+                ))}
+                <p className="text-[#b7b6ba] text-xs">
+                  Total: {Object.values(analysesData.data.attributes.stats).reduce((total, value) => total + value, 0)}
+                </p>
+              </>
+              ) : (
+                <p className="text-[#b7b6ba]">No data available.</p>
+              )}
 
-        <div className="row-span-1">
-          <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
-            Get Report
-          </button>
+              <hr className="my-2"/>
+            </div>
+
+            <div className="row-span-1">
+              <button className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
+                Get Report
+              </button>
+            </div>
+            
+          </div>
+          
         </div>
-        
       </div>
-      
     </div>
-  </div>
+  
   );
 }
 
