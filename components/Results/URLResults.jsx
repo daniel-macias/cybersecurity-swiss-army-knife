@@ -5,14 +5,15 @@ import axios from 'axios';
 import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 import { Doughnut } from 'react-chartjs-2';
-import { AiOutlineDownload } from "react-icons/ai";
 import { unixTimestampToDateString } from '../../utils/dateUtils';
 import { downloadJson } from '../../utils/jsonUtils';
 import { MdOutlineSecurity } from "react-icons/md";
+import { TbFaceIdError } from "react-icons/tb";
 
 function URLResults({ data }) {
   // Create a state variable to hold the data
   const [analysesData, setAnalysesData] = useState({});
+  const [generatedError, setGeneratedError] = useState("");
 
   const [chartData, setChartData] = useState({
     labels: [],
@@ -23,10 +24,6 @@ function URLResults({ data }) {
       },
     ],
   });
-
-  const handleScanClick = async () => {
-    console.log("SDOWN");
-  };
 
   // Use the useEffect hook to update the data when the prop 'data' changes
   useEffect(() => {
@@ -113,12 +110,13 @@ function URLResults({ data }) {
       // Extract the scan result from the response
       const scanResult = response.data;
 
+      setGeneratedError("");
       setAnalysesData(scanResult);
       console.log(analysesData);
     } catch (error) {
-      console.error('Error scanning FILE:', error);
-      onScan(error.message)
-      // Handle errors as needed
+      console.error('Error scanning URL:', error);
+      setGeneratedError(data);
+      //onScan(error.message)
     }
   };
 
@@ -135,17 +133,23 @@ function URLResults({ data }) {
         <div className="col-span-2">
           <h2 className="text-2xl">URL Results</h2>
           <div>
-            {analysesData.data && analysesData.data.attributes && chartData.labels.length > 0 ? (
+            {generatedError === "" && analysesData.data && analysesData.data.attributes && chartData.labels.length > 0 && (
               <>
                 <h3>Scan Date: {unixTimestampToDateString(analysesData.data.attributes.date)}</h3>
                 <h3>Status: {analysesData.data.attributes.status}</h3>
                 <Doughnut data={chartData} />
               </>
-            ) : (
-              <p>Your data is queued, please press "scan" again in a minute.
-                This should be done manually as this project uses the free tier of an API and to not make constant API calls. Thanks!
-              </p>
-              
+            )}
+
+            {generatedError !== "" && (
+              <div> 
+                <div className="flex flex-col items-center text-center py-8">
+                <p className="px-4">Error: The URL provided is not valid</p>
+                  <TbFaceIdError size={50} className="text-[#e65252]"/>
+                  {generatedError}
+                </div>
+                
+              </div>
             )}
             
           </div>

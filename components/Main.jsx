@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ResultsContainer from './ResultsContainer'
 import DomainScan from './DomainScan'
 import FileScan from './FileScan'
 import IPScan from './IPScan'
@@ -40,15 +39,15 @@ function Main() {
               {/* Choose the appropriate scan component based on the currentScanType */}
               {currentScanType === null && (
                 <div>
-                <div className="flex flex-col items-center text-center">
-                <div className="flex items-center text-center pb-4">
-                  <MdOutlineSecurity size={42} className="text-blue-500" /> {/* Adjust the size and color as needed */}
-                  <h2 className="ml-4 text-x2">Infosec MultiTool</h2> {/* Adjust the margin and text size as needed */}
-                </div>
-                  <h1 className="text-2xl mb-4">Please choose a scanning option of your choosing and press the:</h1>
-                  <p className="text-6xl"><AiOutlineSecurityScan /></p>
-                  <h1 className="text-2xl mt-4">button on its side</h1>
-                </div>
+                  <div className="flex flex-col items-center text-center">
+                    <div className="flex items-center text-center pb-4">
+                      <MdOutlineSecurity size={42} className="text-blue-500" /> {/* Adjust the size and color as needed */}
+                      <h2 className="ml-4 text-x2">Infosec MultiTool 1.0</h2> {/* Adjust the margin and text size as needed */}
+                    </div>
+                    <h1 className="text-2xl mb-4">Please choose a scanning option of your choosing and press the:</h1>
+                    <p className="text-6xl"><AiOutlineSecurityScan /></p>
+                    <h1 className="text-2xl mt-4">button on its side</h1>
+                  </div>
                 </div>
               )}
               {currentScanType === 'url' && (
