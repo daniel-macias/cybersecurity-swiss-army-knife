@@ -13,7 +13,7 @@ import { MdOutlineSecurity } from "react-icons/md";
 function FileResults({ data }) {
   // Create a state variable to hold the data
   const [analysesData, setAnalysesData] = useState({});
-
+  
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [
@@ -24,9 +24,16 @@ function FileResults({ data }) {
     ],
   });
 
-  const handleScanClick = async () => {
-    console.log("SDOWN");
-  };
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "module";
+    script.src = "https://cdn.jsdelivr.net/npm/ldrs/dist/auto/cardio.js";
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   // Use the useEffect hook to update the data when the prop 'data' changes
   useEffect(() => {
@@ -97,11 +104,33 @@ function FileResults({ data }) {
 
   }, [analysesData]);
 
+  useEffect(() => {
+    let intervalId;
+
+    const startPolling = () => {
+      intervalId = setInterval(async () => {
+        await handleGetAnalyses();
+      }, 60000);
+    };
+
+    const stopPolling = () => {
+      clearInterval(intervalId);
+    };
+
+    if (analysesData.data?.attributes?.status == "queued") {
+      startPolling();
+      console.log("START POLING")
+    }
+
+    return () => {
+      stopPolling();
+      console.log("STOP POLING")
+    };
+  }, [analysesData.data?.attributes?.status]);
+
   const handleGetAnalyses = async () => {
     try {
-      // Create a new FormData object
-      const formData = new FormData();
-
+      console.log("STARTING SCAN!");
   
       // Make a POST request to the VirusTotal API with the form data and set the "x-apikey" header
       const response = await axios.get('https://www.virustotal.com/api/v3/analyses/'+data.data.id, {
@@ -162,7 +191,7 @@ function FileResults({ data }) {
 
             <div className="row-span-1">
               <button onClick={() => downloadJson(data, "fileresults.json")} className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
-                Get Report
+                Download Report
               </button>
             </div>
             
@@ -171,9 +200,18 @@ function FileResults({ data }) {
         </div>
       </div>
       ) : (
-        <p>Your data is queued, please press "scan" again in a minute.
-          This should be done manually as this project uses the free tier of an API and to not make constant API calls. Thanks!
-        </p>
+        <>
+          <div className="flex items-center pb-4">
+          <p className="px-4">Your data is queued, please wait! This should only take a minute.
+          </p>
+          <l-cardio
+            size="120"
+            stroke="10"
+            speed="2" 
+            color="white" 
+          ></l-cardio>
+          </div>
+        </>
         
       )}
     </div>

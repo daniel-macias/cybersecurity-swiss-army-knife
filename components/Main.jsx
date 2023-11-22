@@ -11,7 +11,7 @@ import FileResults from './Results/FileResults';
 import DomainResults from './Results/DomainResults';
 
 import { AiOutlineSecurityScan } from "react-icons/ai";
-
+import { MdOutlineSecurity } from "react-icons/md";
 
 function Main() {
 
@@ -39,10 +39,16 @@ function Main() {
             <div>
               {/* Choose the appropriate scan component based on the currentScanType */}
               {currentScanType === null && (
+                <div>
                 <div className="flex flex-col items-center text-center">
-                  <h1 className="text-2xl mb-4">Please choose a scanning option of your choosing and press the scan:</h1>
+                <div className="flex items-center text-center pb-4">
+                  <MdOutlineSecurity size={42} className="text-blue-500" /> {/* Adjust the size and color as needed */}
+                  <h2 className="ml-4 text-x2">Infosec MultiTool</h2> {/* Adjust the margin and text size as needed */}
+                </div>
+                  <h1 className="text-2xl mb-4">Please choose a scanning option of your choosing and press the:</h1>
                   <p className="text-6xl"><AiOutlineSecurityScan /></p>
-                  <h1 className="text-2xl mt-4">on its right side</h1>
+                  <h1 className="text-2xl mt-4">button on its side</h1>
+                </div>
                 </div>
               )}
               {currentScanType === 'url' && (
