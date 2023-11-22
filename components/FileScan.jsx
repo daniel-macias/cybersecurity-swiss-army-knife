@@ -4,9 +4,21 @@ import { AiOutlineSecurityScan } from "react-icons/ai";
 
 function FileScan({ onScan }) {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFileName, setSelectedFileName] = useState("Please upload a file");
 
   const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
+    const file = e.target.files[0];
+    setSelectedFile(file);
+
+    if (file) {
+      const fileType = file.type.split("/")[1]; // Extract file extension
+      const truncatedName = file.name.length > 25
+        ? file.name.slice(0, 20) + "..." + `.${fileType}`
+        : file.name;
+      setSelectedFileName(truncatedName);
+    } else {
+      setSelectedFileName("Please upload a file");
+    }
   };
 
   const handleScanClick = async () => {
@@ -41,13 +53,19 @@ function FileScan({ onScan }) {
     <div className="grid grid-cols-6 gap-4">
       <div className="col-span-5">
         <label htmlFor="file_input">File Scan</label>
-        <input
-          type="file"
-          id="file_input"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          aria-describedby="file_input_help"
-          onChange={handleFileChange}
-        />
+        <div className="relative mt-1">
+          <label className="cursor-pointer bg-blue-500 text-white py-2 px-4 rounded-md">
+            Choose File
+            <input
+              type="file"
+              className="hidden"
+              onChange={handleFileChange}
+            />
+          </label>
+          <span className="ml-2 text-sm text-gray-400" id="file-name">
+            {selectedFileName}
+          </span>
+        </div>
         <p className="mt-1 text-sm text-gray-400" id="file_input_help">
           Please upload a file smaller than 32MB
         </p>

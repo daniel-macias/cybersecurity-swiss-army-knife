@@ -133,6 +133,7 @@ function IPResults({ data }) {
               <p>Owner:</p>
               <p>{data.data.attributes.as_owner}</p>
               <p>Country: {data.data.attributes.country}</p>
+              <img src={`https://flagsapi.com/${data.data.attributes.country}/flat/32.png`} alt="Country Flag" />
               <p className="pt-2">Last Analysis</p>
               <p>{unixTimestampToDateString(data.data.attributes.last_analysis_date)}</p>
               <p className="pt-2">Last HTTPS Certificate</p>
