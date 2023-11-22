@@ -7,10 +7,11 @@ import { Doughnut, Bar } from 'react-chartjs-2';
 import { unixTimestampToDateString } from '../../utils/dateUtils';
 import { downloadJson } from '../../utils/jsonUtils';
 import { MdOutlineSecurity } from "react-icons/md";
+import { TbFaceIdError } from "react-icons/tb";
 
 function IPResults({ data }) {
-  // Create a state variable to hold the data
-  const [resultData, setResultData] = useState(data);
+
+  const [generatedError, setGeneratedError] = useState("");
 
   const [urlChartData, setUrlChartData] = useState({
     labels: [],
@@ -34,64 +35,67 @@ function IPResults({ data }) {
 
   // Use the useEffect hook to update the data when the prop 'data' changes
   useEffect(() => {
-    setResultData(data);
-    if (data.data.attributes.last_analysis_stats) {
-      const stats = data.data.attributes.last_analysis_stats;
-      const labels = Object.keys(stats);
-      const values = labels.map((key) => stats[key]);
-      // You can set colors for the chart segments here
-      const backgroundColor = [
-        'green',
-        'red',
-        'orange',
-        'cyan',
-        'yellow',
-        'blue'
-      ];
-  
-      setUrlChartData({
-        labels,
-        datasets: [
-          {
-            data: values,
-            backgroundColor,
-            borderWidth: 0,
-          },
-          
-        ],
-        
-      });
+    if(data.data && data.data.id){
 
-      const cleanedData = {
-        labels: [],
-        datasets: [
-          {
-            data: [],
-            backgroundColor: [],
-            borderWidth: 0
-          }
-        ]
-      };
-
-      if (data.data.attributes.total_votes){
-
-        const dataVotes = {
-          labels: ['Votes'],
+      if (data.data.attributes.last_analysis_stats) {
+        const stats = data.data.attributes.last_analysis_stats;
+        const labels = Object.keys(stats);
+        const values = labels.map((key) => stats[key]);
+        // You can set colors for the chart segments here
+        const backgroundColor = [
+          'green',
+          'red',
+          'orange',
+          'cyan',
+          'yellow',
+          'blue'
+        ];
+    
+        setUrlChartData({
+          labels,
           datasets: [
             {
-              label: 'Harmless',
-              backgroundColor: 'green',
-              data: [data.data.attributes.total_votes.harmless],
+              data: values,
+              backgroundColor,
+              borderWidth: 0,
             },
-            {
-              label: 'Malicious',
-              backgroundColor: 'red',
-              data: [data.data.attributes.total_votes.malicious],
-            },
+            
           ],
+          
+        });
+
+        const cleanedData = {
+          labels: [],
+          datasets: [
+            {
+              data: [],
+              backgroundColor: [],
+              borderWidth: 0
+            }
+          ]
         };
 
-        setVotesChartData(dataVotes);
+        if (data.data.attributes.total_votes){
+
+          const dataVotes = {
+            labels: ['Votes'],
+            datasets: [
+              {
+                label: 'Harmless',
+                backgroundColor: 'green',
+                data: [data.data.attributes.total_votes.harmless],
+              },
+              {
+                label: 'Malicious',
+                backgroundColor: 'red',
+                data: [data.data.attributes.total_votes.malicious],
+              },
+            ],
+          };
+
+          setVotesChartData(dataVotes);
+          setGeneratedError(""); 
+        }
       }
 /*
       chartData.labels.forEach((label, index) => {
@@ -106,6 +110,13 @@ function IPResults({ data }) {
       console.log("Chart Data")
       console.log(urlChartData);
     }
+    else{
+      setGeneratedError(data);
+      console.log("this is the data");
+      console.log(data);
+
+      console.log("data end");
+    }
 
 
   }, [data]);
@@ -116,69 +127,80 @@ function IPResults({ data }) {
           <MdOutlineSecurity size={36} className="text-blue-500" /> {/* Adjust the size and color as needed */}
           <h2 className="ml-4 text-x2">Infosec MultiTool</h2> {/* Adjust the margin and text size as needed */}
         </div>
-      <div className="grid md:grid-cols-2 h-full">
-        <div className="md:col-span-1 text-[#b7b6ba] text-xs">
-          <p>Owner:</p>
-          <p>{data.data.attributes.as_owner}</p>
-          <p>Country: {data.data.attributes.country}</p>
-          <p className="pt-2">Last Analysis</p>
-          <p>{unixTimestampToDateString(data.data.attributes.last_analysis_date)}</p>
-          <p className="pt-2">Last HTTPS Certificate</p>
-          <p>{unixTimestampToDateString(data.data.attributes.last_https_certificate_date)}</p>
-          <p className="pt-2">Network</p>
-          <p>{data.data.attributes.network}</p>
-          <p className="pt-2">Regional Internet Registry</p>
-          <p>{data.data.attributes.regional_internet_registry}</p>
-          <p className="pt-2">VirusTotal Reputation Score</p>
-          <p>{data.data.attributes.reputation}</p>
-          <hr className="py-4"/>
-          <button onClick={() => downloadJson(data, "ipresults.json")} className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
-              Download Full Report
-          </button>
+        {data.data && data.data.id && (
+          <div className="grid md:grid-cols-2 h-full">
+            <div className="md:col-span-1 text-[#b7b6ba] text-xs">
+              <p>Owner:</p>
+              <p>{data.data.attributes.as_owner}</p>
+              <p>Country: {data.data.attributes.country}</p>
+              <p className="pt-2">Last Analysis</p>
+              <p>{unixTimestampToDateString(data.data.attributes.last_analysis_date)}</p>
+              <p className="pt-2">Last HTTPS Certificate</p>
+              <p>{unixTimestampToDateString(data.data.attributes.last_https_certificate_date)}</p>
+              <p className="pt-2">Network</p>
+              <p>{data.data.attributes.network}</p>
+              <p className="pt-2">Regional Internet Registry</p>
+              <p>{data.data.attributes.regional_internet_registry}</p>
+              <p className="pt-2">VirusTotal Reputation Score</p>
+              <p>{data.data.attributes.reputation}</p>
+              <hr className="py-4"/>
+              <button onClick={() => downloadJson(data, "ipresults.json")} className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
+                  Download Full Report
+              </button>
 
-        </div>
-        <div className="md:col-span-1 md:h-full">
-          <div className="grid md:grid-rows-2 h-full">
-            <div className="md:row-span-1 h-full">
-              <p className="text-center text-[#b7b6ba] text-xs pb-2">URL Aggregate Scan Results</p>
-              <Doughnut 
-                data={urlChartData} 
-                options={{ 
-                  plugins: { 
-                    legend: { 
-                      display: false 
-                    } 
-                  } 
-                }} 
-                className="h-5" 
-              />
             </div>
-            <div className="md:row-span-1 h-full">
-              <p className="text-center text-[#b7b6ba] text-xs p-2 pt-8">Virus Total Reputation</p>
-              <Bar 
-                data={votesChartData} 
-                options={{ 
-                  indexAxis: 'y',
-                  scales: { 
-                    x: { 
-                      stacked: true 
-                    },
-                    y: {
-                      stacked: true
-                    } 
-                  },
-                  plugins: { 
-                    legend: { 
-                      display: false 
-                    } 
-                  }  
-                }} 
-                className="h-5" 
-              />
+            <div className="md:col-span-1 md:h-full">
+              <div className="grid md:grid-rows-2 h-full">
+                <div className="md:row-span-1 h-full">
+                  <p className="text-center text-[#b7b6ba] text-xs pb-2">URL Aggregate Scan Results</p>
+                  <Doughnut 
+                    data={urlChartData} 
+                    options={{ 
+                      plugins: { 
+                        legend: { 
+                          display: false 
+                        } 
+                      } 
+                    }} 
+                    className="h-5" 
+                  />
+                </div>
+                <div className="md:row-span-1 h-full">
+                  <p className="text-center text-[#b7b6ba] text-xs p-2 pt-8">Virus Total Reputation</p>
+                  <Bar 
+                    data={votesChartData} 
+                    options={{ 
+                      indexAxis: 'y',
+                      scales: { 
+                        x: { 
+                          stacked: true 
+                        },
+                        y: {
+                          stacked: true
+                        } 
+                      },
+                      plugins: { 
+                        legend: { 
+                          display: false 
+                        } 
+                      }  
+                    }} 
+                    className="h-5" 
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          )}
+          {generatedError !== "" && (
+            <div> 
+              <div className="flex flex-col items-center text-center py-8">
+                <p className="px-4">Error: The domain provided is not valid</p>
+                <TbFaceIdError size={50} className="text-[#e65252]"/>
+                {generatedError}
+              </div>     
+            </div>
+          )}
       
     </div>
   );

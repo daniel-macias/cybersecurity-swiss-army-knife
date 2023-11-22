@@ -7,11 +7,11 @@ import { Doughnut, Bar } from 'react-chartjs-2';
 import { unixTimestampToDateString } from '../../utils/dateUtils';
 import { downloadJson } from '../../utils/jsonUtils';
 import { MdOutlineSecurity } from "react-icons/md";
+import { TbFaceIdError } from "react-icons/tb";
 
 function DomainResults({ data }) {
 
-  // Create a state variable to hold the data
-  const [resultData, setResultData] = useState(data);
+  const [generatedError, setGeneratedError] = useState("");
 
   const [urlChartData, setUrlChartData] = useState({
     labels: [],
@@ -35,78 +35,84 @@ function DomainResults({ data }) {
 
   // Use the useEffect hook to update the data when the prop 'data' changes
   useEffect(() => {
-    setResultData(data);
-    if (data.data.attributes.last_analysis_stats) {
-      const stats = data.data.attributes.last_analysis_stats;
-      const labels = Object.keys(stats);
-      const values = labels.map((key) => stats[key]);
-      // You can set colors for the chart segments here
-      const backgroundColor = [
-        'green',
-        'red',
-        'orange',
-        'cyan',
-        'yellow',
-        'blue'
-      ];
-  
-      setUrlChartData({
-        labels,
-        datasets: [
-          {
-            data: values,
-            backgroundColor,
-            borderWidth: 0,
-          },
-          
-        ],
-        
-      });
-
-      const cleanedData = {
-        labels: [],
-        datasets: [
-          {
-            data: [],
-            backgroundColor: [],
-            borderWidth: 0
-          }
-        ]
-      };
-
-      if (data.data.attributes.total_votes){
-
-        const dataVotes = {
-          labels: ['Votes'],
+    
+    if(data.data && data.data.id){
+      if (data.data.attributes.last_analysis_stats) {
+        const stats = data.data.attributes.last_analysis_stats;
+        const labels = Object.keys(stats);
+        const values = labels.map((key) => stats[key]);
+        // You can set colors for the chart segments here
+        const backgroundColor = [
+          'green',
+          'red',
+          'orange',
+          'cyan',
+          'yellow',
+          'blue'
+        ];
+    
+        setUrlChartData({
+          labels,
           datasets: [
             {
-              label: 'Harmless',
-              backgroundColor: 'green',
-              data: [data.data.attributes.total_votes.harmless],
+              data: values,
+              backgroundColor,
+              borderWidth: 0,
             },
-            {
-              label: 'Malicious',
-              backgroundColor: 'red',
-              data: [data.data.attributes.total_votes.malicious],
-            },
+            
           ],
+          
+        });
+  
+        const cleanedData = {
+          labels: [],
+          datasets: [
+            {
+              data: [],
+              backgroundColor: [],
+              borderWidth: 0
+            }
+          ]
         };
-
-        setVotesChartData(dataVotes);
-      }
-/*
-      chartData.labels.forEach((label, index) => {
-        if (chartData.datasets[0].data[index] > 0) {
-          cleanedData.labels.push(label);
-          cleanedData.datasets[0].data.push(chartData.datasets[0].data[index]);
-          cleanedData.datasets[0].backgroundColor.push(chartData.datasets[0].backgroundColor[index]);
+  
+        if (data.data.attributes.total_votes){
+  
+          const dataVotes = {
+            labels: ['Votes'],
+            datasets: [
+              {
+                label: 'Harmless',
+                backgroundColor: 'green',
+                data: [data.data.attributes.total_votes.harmless],
+              },
+              {
+                label: 'Malicious',
+                backgroundColor: 'red',
+                data: [data.data.attributes.total_votes.malicious],
+              },
+            ],
+          };
+  
+          setVotesChartData(dataVotes);
         }
-      });
-      setChartData(cleanedData);
-*/
-      console.log("Chart Data")
-      console.log(urlChartData);
+  /*
+        chartData.labels.forEach((label, index) => {
+          if (chartData.datasets[0].data[index] > 0) {
+            cleanedData.labels.push(label);
+            cleanedData.datasets[0].data.push(chartData.datasets[0].data[index]);
+            cleanedData.datasets[0].backgroundColor.push(chartData.datasets[0].backgroundColor[index]);
+          }
+        });
+        setChartData(cleanedData);
+  */
+        console.log("Chart Data")
+        console.log(urlChartData);
+      }
+      setGeneratedError(""); 
+    }else{
+      setGeneratedError(data);
     }
+    
 
 
   }, [data]);
@@ -117,7 +123,8 @@ function DomainResults({ data }) {
         <MdOutlineSecurity size={36} className="text-blue-500" /> {/* Adjust the size and color as needed */}
         <h2 className="ml-4 text-x2">Infosec MultiTool</h2> {/* Adjust the margin and text size as needed */}
       </div>
-      <div className="grid md:grid-cols-2 h-full">
+      {data.data && data.data.id && (
+        <div className="grid md:grid-cols-2 h-full">
         <div className="md:col-span-1 text-[#b7b6ba] text-xs">
           <strong>Name:</strong>
           <p>{data.data.id}</p>
@@ -192,6 +199,18 @@ function DomainResults({ data }) {
           </div>
         </div>
       </div>
+      )}
+
+      {generatedError !== "" && (
+        <div> 
+          <div className="flex flex-col items-center text-center py-8">
+            <p className="px-4">Error: The domain provided is not valid</p>
+            <TbFaceIdError size={50} className="text-[#e65252]"/>
+            {generatedError}
+          </div>     
+        </div>
+      )}
+      
       
     </div>
   );

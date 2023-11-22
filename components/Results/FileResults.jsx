@@ -5,14 +5,16 @@ import axios from 'axios';
 import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 import { Doughnut } from 'react-chartjs-2';
-import { AiOutlineDownload } from "react-icons/ai";
 import { unixTimestampToDateString } from '../../utils/dateUtils';
 import { downloadJson } from '../../utils/jsonUtils';
 import { MdOutlineSecurity } from "react-icons/md";
+import { TbFaceIdError } from "react-icons/tb";
 
 function FileResults({ data }) {
   // Create a state variable to hold the data
   const [analysesData, setAnalysesData] = useState({});
+
+  const [generatedError, setGeneratedError] = useState({});
   
   const [chartData, setChartData] = useState({
     labels: [],
@@ -119,12 +121,10 @@ function FileResults({ data }) {
 
     if (analysesData.data?.attributes?.status == "queued") {
       startPolling();
-      console.log("START POLING")
     }
 
     return () => {
       stopPolling();
-      console.log("STOP POLING")
     };
   }, [analysesData.data?.attributes?.status]);
 
@@ -141,13 +141,11 @@ function FileResults({ data }) {
   
       // Extract the scan result from the response
       const scanResult = response.data;
-
+      setGeneratedError("");
       setAnalysesData(scanResult);
-      console.log(analysesData);
     } catch (error) {
       console.error('Error scanning FILE:', error);
-      onScan(error.message)
-      // Handle errors as needed
+      setGeneratedError(data);
     }
   };
 
@@ -157,7 +155,7 @@ function FileResults({ data }) {
         <MdOutlineSecurity size={36} className="text-blue-500" /> {/* Adjust the size and color as needed */}
         <h2 className="ml-4 text-x2">Infosec MultiTool</h2> {/* Adjust the margin and text size as needed */}
       </div>
-      {analysesData.data && analysesData.data.attributes && chartData.labels.length > 0 && analysesData.data.attributes.status != "queued" ? (
+      {generatedError === "" && analysesData.data && analysesData.data.attributes && chartData.labels.length > 0 && analysesData.data.attributes.status != "queued" ? (
       <div className="grid grid-cols-3">
         <div className="col-span-2">
           <h2 className="text-2xl">File Results</h2>
@@ -199,7 +197,8 @@ function FileResults({ data }) {
           
         </div>
       </div>
-      ) : (
+      ) : generatedError === "" &&  (
+
         <>
           <div className="flex items-center pb-4">
           <p className="px-4">Your data is queued, please wait! This should only take a minute.
@@ -214,6 +213,19 @@ function FileResults({ data }) {
         </>
         
       )}
+
+          
+
+      {generatedError !== "" && (
+              <div> 
+                <div className="flex flex-col items-center text-center py-8">
+                <p className="px-4">Error: The file provided is not valid</p>
+                  <TbFaceIdError size={50} className="text-[#e65252]"/>
+                  <p className="px-4">Please provide a file smaller than 32MB</p>
+                </div>
+                
+              </div>
+            )}
     </div>
   
   );

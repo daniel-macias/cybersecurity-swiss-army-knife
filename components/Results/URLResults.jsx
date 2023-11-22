@@ -116,7 +116,6 @@ function URLResults({ data }) {
     } catch (error) {
       console.error('Error scanning URL:', error);
       setGeneratedError(data);
-      //onScan(error.message)
     }
   };
 
