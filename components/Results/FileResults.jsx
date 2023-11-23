@@ -55,14 +55,14 @@ function FileResults({ data }) {
       console.log(values);
       // You can set colors for the chart segments here
       const backgroundColor = [
-        'green',
-        'cyan',
-        'orange',
-        'yellow',
-        'purple',
-        'pink',
-        'red',
-        'blue',
+        '#6fe138',
+        '#97ecde',
+        '#ffb55a',
+        '#ffee65',
+        '#bd7ebe',
+        '#fdcce5',
+        '#fd7f6f',
+        '#56a1f5',
       ];
   
       setChartData({

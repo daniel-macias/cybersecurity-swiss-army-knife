@@ -43,12 +43,12 @@ function DomainResults({ data }) {
         const values = labels.map((key) => stats[key]);
         // You can set colors for the chart segments here
         const backgroundColor = [
-          'green',
-          'red',
-          'orange',
-          'cyan',
-          'yellow',
-          'blue'
+          '#6fe138',
+          '#fd7f6f',
+          '#ffb55a',
+          '#97ecde',
+          '#ffee65',
+          '#56a1f5'
         ];
     
         setUrlChartData({
@@ -82,12 +82,12 @@ function DomainResults({ data }) {
             datasets: [
               {
                 label: 'Harmless',
-                backgroundColor: 'green',
+                backgroundColor: '#6fe138',
                 data: [data.data.attributes.total_votes.harmless],
               },
               {
                 label: 'Malicious',
-                backgroundColor: 'red',
+                backgroundColor: '#fd7f6f',
                 data: [data.data.attributes.total_votes.malicious],
               },
             ],

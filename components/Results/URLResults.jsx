@@ -43,14 +43,11 @@ function URLResults({ data }) {
       console.log(values);
       // You can set colors for the chart segments here
       const backgroundColor = [
-        'green',
-        'cyan',
-        'orange',
-        'yellow',
-        'purple',
-        'pink',
-        'red',
-        'blue',
+        '#6fe138', 
+        '#fd7f6f',
+        '#ffb55a',
+        '#56a1f5',
+        '#fdcce5'
       ];
   
       setChartData({
@@ -153,10 +150,9 @@ function URLResults({ data }) {
             
           </div>
         </div>
-        <div className="col-span-1 bg-[#444347] rounded-md p-4 grow-0">
-          <p className="text-center text-[#b7b6ba]  text-lg">Summary</p>
-          <div className="grid grid-rows-6">
-            <div className="row-span-5">
+        <div className="col-span-1  grow-0 m-2">
+          <p className="text-center text-[#b7b6ba]  text-xl">Summary</p>
+          <div className="col-span-1 bg-[#444347] rounded-md p-4 grow-0 m-2">
               {analysesData.data && analysesData.data.attributes ? (
               <>
                 {Object.keys(analysesData.data.attributes.stats).map((key) => (
@@ -164,24 +160,20 @@ function URLResults({ data }) {
                     {key}: {analysesData.data.attributes.stats[key]}
                   </p>
                 ))}
+                <hr className="my-2"/>
                 <p className="text-[#b7b6ba] text-xs">
-                  Total: {Object.values(analysesData.data.attributes.stats).reduce((total, value) => total + value, 0)}
+                  <strong>Total: {Object.values(analysesData.data.attributes.stats).reduce((total, value) => total + value, 0)}</strong>
                 </p>
               </>
               ) : (
                 <p className="text-[#b7b6ba]">No data available.</p>
               )}
 
-              <hr className="my-2"/>
             </div>
 
-            <div className="row-span-1">
-              <button onClick={() => downloadJson(data, "urlresults.json")} className="inline-block bg-blue-500 text-white px-2 py-2 rounded-md text-xs w-full">
-                Get Report
+            <button onClick={() => downloadJson(data, "urlresults.json")} className="inline-block text-white px-2 py-2 rounded-md text-xs w-full">
+                Download Report
               </button>
-            </div>
-            
-          </div>
           
         </div>
       </div>
